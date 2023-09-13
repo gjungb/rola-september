@@ -1,0 +1,5 @@
+<p>led works!</p>
+
+<h2>Index: {{ led.index + 1 }}</h2>
+
+<div (click)="handleClick($event)" [style.background-color]="led.color" class="box"></div>
