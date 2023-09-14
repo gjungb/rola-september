@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -7,11 +8,17 @@ import {
 } from '@angular/core';
 import { Led } from '../model/led';
 
+/**
+ * Representational Component
+ * Stateless Component
+ * Dumb Component
+ */
 @Component({
   selector: 'pi-led',
   templateUrl: './led.component.html',
   styleUrls: ['./led.component.scss'],
   encapsulation: ViewEncapsulation.Emulated,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LedComponent {
   /**
