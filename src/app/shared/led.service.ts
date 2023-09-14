@@ -53,4 +53,17 @@ export class LedService {
       },
     ]);
   }
+
+  /**
+   *
+   * @param i
+   * @returns
+   */
+  readLed(i: number | string): Observable<Led> {
+    const index = typeof i === 'number' ? i : Number.parseInt(i);
+    const url = `${this.#base}/colors/${i}`;
+    return this.#client
+      .get(url, { responseType: 'text' })
+      .pipe(map((color) => ({ index, color })));
+  }
 }

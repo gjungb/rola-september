@@ -4,6 +4,7 @@
   <tbody>
     <tr>
       <td *ngFor="let thing of leds">
+        <a [routerLink]="[ thing.index ]">Led {{ thing.index + 1 }}</a>
         <pi-led (colorChange)="setRandomColor($event)" [led]="thing"></pi-led>
       </td>
     </tr>
