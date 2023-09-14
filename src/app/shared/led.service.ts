@@ -2,20 +2,28 @@ import { Injectable, inject } from '@angular/core';
 import { Led } from '../model/led';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, of } from 'rxjs';
+import { BASE_URL } from './tokens.di';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LedService {
+  /**
+   *
+   */
   #client = inject(HttpClient);
+
+  /**
+   *
+   */
+  #base = inject(BASE_URL);
+
   /**
    *
    * @returns
    */
   readLeds(): Observable<Led[]> {
-    // TODO move to DI
-    const url =
-      'https://347eb1836965ec040f474bd7f78d4730.balena-devices.com/api/colors';
+    const url = `${this.#base}/colors`;
 
     const res$ = this.#client.get<string[]>(url);
 

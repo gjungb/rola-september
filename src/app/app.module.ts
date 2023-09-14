@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LedComponent } from './led/led.component';
 import { LedListComponent } from './led-list/led-list.component';
+import { LedComponent } from './led/led.component';
 
 @NgModule({
   declarations: [AppComponent, LedComponent, LedListComponent],
