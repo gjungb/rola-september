@@ -1,7 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { delay, tap, timer } from 'rxjs';
 import { Led } from '../model/led';
 import { LedService } from '../shared/led.service';
-import { delay, tap } from 'rxjs';
 
 /**
  * Stateful Component
@@ -17,18 +18,19 @@ export class LedListComponent implements OnInit {
 
   leds!: Led[];
 
-  /**
-   * Local state
-   */
+  ticker$ = timer(2e3, 1_000).pipe(tap((value) => console.log(value)));
 
   ngOnInit(): void {
     this.#service
       .readLeds()
       .pipe(
-        delay(5_000),
+        delay(1_000),
         tap((leds) => console.log(leds))
       )
       .subscribe((value) => {
+        /**
+         * Local state
+         */
         this.leds = value;
       });
   }

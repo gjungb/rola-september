@@ -1,9 +1,14 @@
 <p>led-list works!</p>
 
+<p>
+  {{ ticker$ | async }}
+</p>
+
 <table>
   <tbody>
     <tr>
       <td *ngFor="let thing of leds">
+        <a [routerLink]="[ thing.index ]">Led {{ thing.index }}</a>
         <pi-led (colorChange)="setRandomColor($event)" [led]="thing"></pi-led>
       </td>
     </tr>

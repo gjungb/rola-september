@@ -2,4 +2,14 @@
 
 <h2>Index: {{ led.index + 1 }}</h2>
 
-<div (click)="handleClick($event)" [style.background-color]="led.color" class="box"></div>
+<div
+  (click)="handleClick($event)"
+  [style.background-color]="led.color"
+  class="box"
+></div>
+
+<p>
+  {{ led.color | piColor: 'hex6' }}
+</p>
+
+<pre><code>{{ led | json }}</code></pre>
